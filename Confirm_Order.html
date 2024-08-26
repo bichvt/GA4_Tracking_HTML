@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order</title>
+</head>
+<body>
+    <h1>Confirm Your Order</h1>
+    <p id="totalQuantity"></p>
+    <p id="totalPrice"></p>
+
+    <!-- Nút Purchase -->
+    <button onclick="purchase()">Purchase</button>
+
+    <script>
+        // Lấy thông tin từ localStorage
+        const price = sessionStorage.getItem('productPrice');
+        const quantity = sessionStorage.getItem('productQuantity');
+        const totalPrice = price * quantity;
+
+        // Hiển thị thông tin
+        document.getElementById('totalQuantity').textContent = `Total Quantity: ${quantity}`;
+        document.getElementById('totalPrice').textContent = `Total Price: $${totalPrice}`;
+
+        // Hàm chuyển hướng đến trang hoàn thành đơn hàng
+        function purchase() {
+            window.location.href = 'Finish_Order.html';
+        }
+    </script>
+</body>
+</html>

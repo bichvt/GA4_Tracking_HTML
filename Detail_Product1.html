@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product 1 Details</title>
+</head>
+<body>
+    <h1>Product 1</h1>
+    <img src="product1.jpg" alt="Product 1 Image">
+    <p>Price: $80</p>
+    <p>Quantity: <input type="number" id="quantity" value="1"></p>
+    <button onclick="saveOrder()">Order Now</button>
+
+    <script>
+        function saveOrder() {
+            const price = 80; // Giá của sản phẩm
+            const quantity = document.getElementById('quantity').value; // Số lượng sản phẩm
+
+            // Lưu thông tin vào sessionStorage
+            sessionStorage.setItem('productPrice', price);
+            sessionStorage.setItem('productQuantity', quantity);
+
+            // Chuyển đến trang xác nhận đơn hàng
+            window.location.href = 'Confirm_Order.html';
+        }
+    </script>
+</body>
+</html>
