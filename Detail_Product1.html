@@ -4,33 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product 1 Details</title>
-    <!-- CHANGE 1: the Content-Security-Policy meta was REMOVED. It has no 'unsafe-inline', so it blocks the inline
-         GTM init script, the onclick handler and saveOrder(). (If you must keep a CSP, add a nonce/hash to every inline script.) -->
-
-<!-- CHANGE 2 (for check 1-2 only): a pre-existing dataLayer queue, placed BEFORE both snippets.
+   
+<!-- For check 1-2 only: a pre-existing dataLayer queue, placed BEFORE both snippets.
      After load, dataLayer[0] must still be this object. Delete this block when the check is done. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   dataLayer.push({ pre_existing: 1 });
 </script>
 
-<!-- Google Tag Manager 1: GTM-TKZLFBZD (new snippet, unchanged) -->
-<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TKZLFBZD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-</script>
-<!-- End Google Tag Manager 1-->
-
-<!-- Google Tag Manager 2: GTM-M882RMPT (new snippet, unchanged) -->
+<!-- Google Tag Manager A: GTM-M882RMPT (new snippet, unchanged) -->
 <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-M882RMPT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 </script>
-<!-- End Google Tag Manager 2-->
+<!-- End Google Tag Manager A-->
+
+<!-- Google Tag Manager B: GTM-TKZLFBZD -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TKZLFBZD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<!-- End Google Tag Manager B-->
+
+
 
 </head>
 <body>
@@ -40,7 +40,7 @@
     <p>Quantity: <input type="number" id="quantity" value="1"></p>
     <button onclick="saveOrder()">Order Now</button>
 
-    <!-- CHANGE 3: a button that pushes ONE custom event; both containers get a trigger on this event name. -->
+    <!-- A button that pushes ONE custom event; both containers get a trigger on this event name. -->
     <button onclick="pushTestEvent()">Push test_event</button>
 
     <script>
@@ -51,7 +51,7 @@
             sessionStorage.setItem('productPrice', price);
             sessionStorage.setItem('productQuantity', quantity);
 
-            // CHANGE 4: push an event and STAY on the page.
+            // Push an event and STAY on the page.
             // The original redirect (window.location.href = 'Confirm_Order.html') unloads the page and can cancel
             // the hits and hides Tag Assistant's timeline. Put it back after the test.
             dataLayer.push({ event: 'order_now', value: price * quantity, quantity: Number(quantity) });
